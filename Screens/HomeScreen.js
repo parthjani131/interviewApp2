@@ -14,6 +14,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useDispatch, useSelector} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/Ionicons';
+import PushNotification from 'react-native-push-notification';
 
 import Card from '../Components/Card';
 import SubmitButton from '../Components/SubmitButton';
@@ -49,6 +50,7 @@ const HomeScreen = props => {
     getLoginUser();
     getTrendingMovieList();
     getAllMovieList();
+    createChannels();
   }, []);
 
   useEffect(() => {
@@ -92,6 +94,22 @@ const HomeScreen = props => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const createChannels = () => {
+    PushNotification.createChannel({
+      channelId: 'test-channel',
+      channelName: 'Test Channel',
+    });
+  };
+
+  const handleNotification = item => {
+    PushNotification.localNotification({
+      channelId: 'test-channel',
+      title: 'You clicked on ' + item.title,
+      message: 'Released on ' + item.release_date,
+      bigText: 'Summury: ' + item.overview,
+    });
   };
 
   return (
@@ -141,10 +159,13 @@ const HomeScreen = props => {
               renderItem={({item, index}) => (
                 <TouchableOpacity
                   activeOpacity={0.6}
+                  // onPress={() => {
+                  //   props.navigation.navigate('Details', {
+                  //     movieId: item.id,
+                  //   });
+                  // }}
                   onPress={() => {
-                    props.navigation.navigate('Details', {
-                      movieId: item.id,
-                    });
+                    handleNotification(item);
                   }}
                   style={styles.trendingCardContainer}>
                   <Card style={styles.trendingCardView}>
@@ -185,11 +206,17 @@ const HomeScreen = props => {
               renderItem={({item, index}) => (
                 <TouchableOpacity
                   activeOpacity={0.6}
+                  // onPress={() => {
+                  //   props.navigation.navigate('Details', {
+                  //     movieId: item.id,
+                  //   });
+                  // }}
                   onPress={() => {
-                    props.navigation.navigate('Details', {
-                      movieId: item.id,
-                    });
+                    handleNotification(item);
                   }}
+                  // onPress={() => {
+                  //   console.log(item);
+                  // }}
                   style={styles.allCardContainer}>
                   <Card style={styles.allCardView}>
                     <Image

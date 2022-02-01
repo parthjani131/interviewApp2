@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "354001179624",
+    "project_id": "interviewapp2-87798",
+    "storage_bucket": "interviewapp2-87798.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354001179624:android:470be52ca93d9785d78a5d",
+        "android_client_info": {
+          "package_name": "com.interviewapp2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354001179624-gjqhe1k8qsqvodl7unro913a405k0udj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2rZYdBZapVkQIsbHI1M9RhBSNWcfEjzk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354001179624-gjqhe1k8qsqvodl7unro913a405k0udj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
